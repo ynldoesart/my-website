@@ -258,7 +258,6 @@ color: rgb(41, 43, 44);
 
 
 
-<script src="https://www.paypal.com/sdk/js?client-id=ARsr_gV5XjTwEEXlAFWdA80y7FwE5jTQ05S-nb9voBPzHTjFN-iGHpnmERfh2b2T9djIspJq5dznmyE2&currency=USD"></script>
 <style>
   /* עיצוב הכפתור */
   #paypal-button-container {
@@ -268,7 +267,7 @@ color: rgb(41, 43, 44);
   }
   #checkout-summary {
     margin-top: 20px;
-    padding: 15px;
+    padding: 5px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -277,20 +276,40 @@ color: rgb(41, 43, 44);
 </style>
 </head>
 <body>
+<!-- אזור כפתור PayPal -->
 <div id="paypal-button-container"></div>
 
-<div id="checkout-summary">
-  <h2>Billing Information</h2>
+<!-- סיכום פרטי ההזמנה לאחר תשלום -->
+<div id="checkout-summary" style="display: none;">
+  <h3>Order Summary</h3>
   <form id="address-form">
-    <label for="address">Shipping Address:</label><br>
-    <input type="text" id="address" name="address" required><br>
-    <label for="city">City:</label><br>
-    <input type="text" id="city" name="city" required><br>
-    <label for="postal">Postal Code:</label><br>
-    <input type="text" id="postal" name="postal" required><br>
-    <button type="submit">Submit Address</button>
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" required><br>
+    
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" required><br>
+    
+    <label for="address">Address:</label>
+    <input type="text" id="address" required><br>
+    
+    <label for="city">City:</label>
+    <input type="text" id="city" required><br>
+    
+    <label for="postal-code">Postal Code:</label>
+    <input type="text" id="postal-code" required><br>
+    
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <button type="submit">Submit Order</button>
   </form>
 </div>
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=ARsr_gV5XjTwEEXlAFWdA80y7FwE5jTQ05S-nb9voBPzHTjFN-iGHpnmERfh2b2T9djIspJq5dznmyE2&components=buttons"></script>
 
 <script>
   // כפתור PayPal
@@ -309,8 +328,19 @@ color: rgb(41, 43, 44);
       return actions.order.capture().then(function(details) {
         alert('Payment Successful!');
 
-        // הצגת פרטי הכתובת אחרי התשלום
+        // הצגת פרטי ההזמנה לאחר התשלום
         document.getElementById('checkout-summary').style.display = 'block';
+
+        // שליפת פרטי הלקוח מ-PayPal (שימו לב שפרטי הלקוח יהיו חלק מההזמנה)
+        const payer = details.payer;
+        console.log('Payer Information:', payer);
+
+        // כאן תוכל לשמור את פרטי הלקוח (שם, דוא"ל, כתובת) לפי הצורך
+        document.getElementById('first-name').value = payer.name.given_name;
+        document.getElementById('last-name').value = payer.name.surname;
+        document.getElementById('email').value = payer.email_address;
+
+        // להוסיף את שאר פרטי ההזמנה הנדרשים כאן
       });
     }
   }).render('#paypal-button-container');
@@ -318,14 +348,20 @@ color: rgb(41, 43, 44);
   // טיפול בפרטי הכתובת
   document.getElementById('address-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    const firstName = document.getElementById('first-name').value;
+    const lastName = document.getElementById('last-name').value;
     const address = document.getElementById('address').value;
     const city = document.getElementById('city').value;
-    const postal = document.getElementById('postal').value;
+    const postalCode = document.getElementById('postal-code').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
 
-    alert(`Address Submitted: ${address}, ${city}, ${postal}`);
-    // כאן ניתן להוסיף קוד לשלוח את הנתונים לשרת שלך
+    // הצגת פרטי הכתובת שהוזנו
+    alert(`Order Submitted: ${firstName} ${lastName}, ${address}, ${city}, ${postalCode}, ${phone}, ${email}`);
+    // כאן תוכל לשלוח את הנתונים לשרת שלך (עם AJAX או fetch)
   });
 </script>
+
 
 
 
