@@ -258,156 +258,73 @@ color: rgb(41, 43, 44);
 
 
 
+<script src="https://www.paypal.com/sdk/js?client-id=ARsr_gV5XjTwEEXlAFWdA80y7FwE5jTQ05S-nb9voBPzHTjFN-iGHpnmERfh2b2T9djIspJq5dznmyE2&currency=USD"></script>
 <style>
-
-  #custom-paypal-button-container {
-    text-align: center;
+  /* עיצוב הכפתור */
+  #paypal-button-container {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
   }
-
-  .shipping-info-form {
-    max-width: 600px;
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* initially hidden */
-  }
-
-  .shipping-info-form input, .shipping-info-form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+  #checkout-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
     border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .shipping-info-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .shipping-info-form button:hover {
-    background-color: #218838;
+    border-radius: 5px;
+    display: none;
   }
 </style>
+</head>
+<body>
+<div id="paypal-button-container"></div>
 
-<!-- כפתור PayPal -->
-<div id="custom-paypal-button-container"></div>
-
-<!-- טופס פרטי המשלוח שמופיע אחרי לחיצה על כפתור התשלום -->
-<div class="shipping-info-form" id="shipping-form">
-  <h2>Shipping Information</h2>
-  <label for="fullName">Full Name</label>
-  <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
-
-  <label for="phoneNumber">Phone Number</label>
-  <input type="text" id="phoneNumber" name="phoneNumber" placeholder="+123456789" required>
-
-  <label for="addressLine1">Address Line 1</label>
-  <input type="text" id="addressLine1" name="addressLine1" placeholder="123 Main St" required>
-
-  <label for="addressLine2">Address Line 2 (Optional)</label>
-  <input type="text" id="addressLine2" name="addressLine2" placeholder="Apt, Suite, Unit, Building, etc.">
-
-  <label for="city">City</label>
-  <input type="text" id="city" name="city" placeholder="City" required>
-
-  <label for="state">State/Province/Region</label>
-  <input type="text" id="state" name="state" placeholder="State" required>
-
-  <label for="postalCode">Postal Code</label>
-  <input type="text" id="postalCode" name="postalCode" placeholder="12345" required>
-
-  <label for="country">Country</label>
-  <select id="country" name="country" required>
-    <option value="US">United States</option>
-    <option value="IL">Israel</option>
-    <option value="CA">Canada</option>
-    <!-- Add more countries as needed -->
-  </select>
-
-  <button type="submit" id="submit-shipping">Proceed to PayPal</button>
+<div id="checkout-summary">
+  <h2>Billing Information</h2>
+  <form id="address-form">
+    <label for="address">Shipping Address:</label><br>
+    <input type="text" id="address" name="address" required><br>
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city" required><br>
+    <label for="postal">Postal Code:</label><br>
+    <input type="text" id="postal" name="postal" required><br>
+    <button type="submit">Submit Address</button>
+  </form>
 </div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=ARsr_gV5XjTwEEXlAFWdA80y7FwE5jTQ05S-nb9voBPzHTjFN-iGHpnmERfh2b2T9djIspJq5dznmyE2&currency=USD"></script>
 <script>
-  // מציג את טופס המשלוח כאשר לוחצים על כפתור התשלום
-  document.getElementById("submit-shipping").addEventListener("click", function(event) {
-    event.preventDefault();
-
-    // הצגת טופס המשלוח
-    const shippingForm = document.getElementById('shipping-form');
-    shippingForm.style.display = 'none'; // מסתיר את טופס המשלוח
-    document.getElementById('custom-paypal-button-container').style.display = 'block'; // מציג את כפתור PayPal
-  });
-
-  // יצירת כפתור PayPal
+  // כפתור PayPal
   paypal.Buttons({
     createOrder: function(data, actions) {
-      const form = document.getElementById('shipping-form');
-      const shippingData = {
-        fullName: form.fullName.value,
-        phoneNumber: form.phoneNumber.value,
-        addressLine1: form.addressLine1.value,
-        addressLine2: form.addressLine2.value || '',
-        city: form.city.value,
-        state: form.state.value,
-        postalCode: form.postalCode.value,
-        country: form.country.value
-      };
-
-      if (!form.checkValidity()) {
-        alert('Please fill out all required fields.');
-        return actions.reject();
-      }
-
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '43.50'  // מחיר התשלום
+            value: '44.50'  // מחיר התשלום
           },
-          shipping: {
-            name: {
-              full_name: shippingData.fullName
-            },
-            address: {
-              address_line_1: shippingData.addressLine1,
-              address_line_2: shippingData.addressLine2,
-              admin_area_2: shippingData.city,
-              admin_area_1: shippingData.state,
-              postal_code: shippingData.postalCode,
-              country_code: shippingData.country
-            }
-          }
+          description: 'Order for Item XYZ'
         }]
       });
     },
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
-        alert('Payment completed successfully! \nThank you, ' + details.purchase_units[0].shipping.name.full_name);
+        alert('Payment Successful!');
 
-        // שלח את פרטי המשלוח לשרת שלך
-        const shippingDetails = details.purchase_units[0].shipping;
-        fetch('https://example.com/store-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            orderID: details.id,
-            shipping: shippingDetails
-          })
-        }).then(response => response.json())
-          .then(data => console.log('Order details stored:', data))
-          .catch(error => console.error('Error storing order details:', error));
+        // הצגת פרטי הכתובת אחרי התשלום
+        document.getElementById('checkout-summary').style.display = 'block';
       });
     }
-  }).render('#custom-paypal-button-container');
+  }).render('#paypal-button-container');
+  
+  // טיפול בפרטי הכתובת
+  document.getElementById('address-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const postal = document.getElementById('postal').value;
+
+    alert(`Address Submitted: ${address}, ${city}, ${postal}`);
+    // כאן ניתן להוסיף קוד לשלוח את הנתונים לשרת שלך
+  });
 </script>
 
 
