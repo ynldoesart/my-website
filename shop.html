@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+    <!-- ניווט -->
+    <nav>
+        <a href="index.html">
+            <svg class="home-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path opacity="0.5" d="M20 12.75C20.4142 12.75 20.75 12.4142 20.75 12C20.75 11.5858 20.4142 11.25 20 11.25V12.75ZM20 11.25H4V12.75H20V11.25Z" fill="#ffc107"></path>
+                    <path d="M10 6L4 12L10 18" stroke="#ffc107" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
+        </a>
+    </nav>
+
+    <!-- תוכן מרכזי -->
+    <div class="content">
+        <h1>ברוכים הבאים לחנות שלנו!</h1>
+        
+        <!-- מוצר לדוגמה -->
+        <div class="product">
+            <img src="https://ae-pic-a1.aliexpress-media.com/kf/S52a59d4920ab4d37973046f3a2d6605e3.jpg_80x80.jpg_.webp" alt="פוף נעים" class="product-image">            
+            <!-- כפתור PayPal -->
+            <script src="https://www.paypal.com/sdk/js?client-id=BAAbo_01Hbr8C5-aVBghowC5LZTw1sZYmN06kyHuA_47BKUjI0292mSdxES5TOLBjSwbzPkDXnVLMytkfg&components=hosted-buttons&disable-funding=venmo&currency=ILS"></script>
+            <div id="paypal-container-SH9GN6D34M7UL"></div>
+            <script>
+              paypal.HostedButtons({
+                hostedButtonId: "SH9GN6D34M7UL",
+              }).render("#paypal-container-SH9GN6D34M7UL");
+            </script>
+        </div>
+    </div>
+
+</body>
+</html>

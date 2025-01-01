@@ -1,0 +1,1213 @@
+/* מסתיר את סרגל הגלילה אך שומר על גלילה */
+html, body {
+  overflow: scroll; /* מאפשר גלילה */
+  scrollbar-width: none; /* מוסתר בפיירפוקס */
+  -ms-overflow-style: none; /* מוסתר ב-IE */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none; /* מוסתר בכרום וספארי */
+}
+
+
+
+
+
+.contact-link {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.contact-link svg {
+  width: 40px; /* גודל קטן יותר */
+  height: auto;
+  transition: width 0.3s ease, height 0.3s ease; /* האנימציה חלקה יותר */
+  margin-right: 10px; /* ריווח בין האייקונים */
+}
+
+.contact-link .icon-call:hover {
+  width: 10px; /* גודל בזמן ריחוף עבור אייקון השיחה */
+}
+
+.contact-link .icon-message:hover {
+  width: 40px; /* גודל בזמן ריחוף עבור אייקון ההודעה */
+}
+
+
+/* מלבן ראשי בראש האתר */
+.top-rectangle {
+  background-color: #FFFBF0;
+  height: 60px; /* גובה המלבן */
+  width: 100%; /* רוחב מלא */
+  display: flex;
+  align-items: center; /* מרכז את התוכן אנכית */
+  justify-content: flex-end; /* ממקם את התוכן בצד ימין */
+  position: relative; /* מאפשר למלבן השני להתמקם יחסית לו */
+  z-index: 1000;
+  margin-bottom: 0px; /* מרווח מתחת למלבן */
+}
+
+/* עיצוב הקישור והאייקון */
+.top-rectangle .contact-link {
+  margin-right: 40px; /* מרווח מימין לאייקון */
+  transition: transform 0.3s ease; /* הוספת אנימציה */
+}
+
+/* אנימציה של zoom-in ו-zoom-out כאשר העכבר עובר */
+.top-rectangle .contact-link:hover svg {
+  transform: scale(1.2); /* הגדלה של האייקון ב-20% */
+}
+
+@media only screen and (max-width: 576px) {
+  .listProduct {
+    gap: 8px; /* רווחים קטנים יותר במכשירים ניידים */
+  }
+  .detail .image img {
+    height: 30vh; /* הקטנת גובה התמונה במסכים קטנים מאוד */
+  }
+  .detail .name {
+    font-size: large; /* גודל טקסט מותאם למסכים קטנים */
+  }
+  .detail .buttons button {
+    font-size: smaller; /* כפתורים קומפקטיים יותר */
+    padding: 8px 12px; /* ריווח פנימי קטן יותר */
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+svg {
+  width: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: #2f2f2f;
+}
+button {
+  cursor: pointer;
+}
+.container {
+  width: 900px;
+  margin: auto;
+  max-width: 90vw;
+  text-align: center;
+  padding-top: 10px;
+  transition: 0.5s;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+/* detail page */
+.detail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  text-align: left;
+}
+.detail .image img {
+  width: 100%;
+}
+.detail .image {
+  position: relative;
+}
+.detail .image::before {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  content: "";
+  background-color: #94817733;
+  z-index: -1;
+  border-radius: 190px 100px 170px 180px;
+  left: calc(50% - 150px);
+  top: 50px;
+}
+.detail .name {
+  font-size: xxx-large;
+  padding: 40px 0 0 0;
+  margin: 0 0 10px 0;
+}
+.detail .price {
+  font-weight: bold;
+  font-size: x-large;
+  letter-spacing: 7px;
+  margin-bottom: 20px;
+}
+.detail .buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.detail .buttons button {
+  background-color: #eee;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-size: large;
+}
+.detail .buttons svg {
+  width: 15px;
+}
+.detail .buttons span {
+  background-color: #555454;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.detail .buttons button:nth-child(2) {
+  background-color: #2f2f2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  box-shadow: 0 10px 20px #2f2f2f77;
+}
+.detail .description {
+  font-weight: 300;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #131417; /* צבע הרקע של  */
+  color: #e0e0e0; /* צבע טקסט כללי */
+  padding: 20px; /* ריווח פנימי */
+  text-align: center; /* ממרכז את התוכן */
+}
+
+/* שינוי צבע הטקסט של זכויות היוצרים באופן ספציפי */
+footer #copyright-text {
+  color: #ff6207; /* צבע טקסט מותאם (למשל כתום) */
+}
+
+/* Secondary Footer Styles */
+.footer-secondary {
+  background-color: #131417; /* צבע רקע שונה עבור ה-footer השני */
+  color: #c2c0c0; /* צבע טקסט כללי */
+  padding: 0px 0px; /* ריווח פנימי: 10px למעלה ולמטה, 20px מצדדים */
+  text-align: center; /* ממרכז את התוכן */
+  height: auto; /* מוודא שהגובה יתאים לתוכן */
+}
+
+.footerText {
+  margin: 0; /* אין רווחים */
+  font-size: 18px; /* גודל פונט מותאם לטקסט */
+  line-height: 1.5; /* רווח בין שורות */
+  text-align: center; /* ממרכז את הטקסט */
+}
+
+/* טקסט התיאור */
+.footerText .description {
+  color: #32381f; /* צבע טקסט מותאם */
+}
+
+/* טקסט "Made by" */
+.footerText .madeBy {
+  color: #32381f; /* צבע טקסט */
+}
+
+.divider {
+  color: #1d2112; /* צבע הקו המפריד */
+  margin: 0 5px; /* רווח בין הקישורים לקו */
+}
+
+.footerText a {
+  color: #32381f; /* צבע כתום עבור הלינק */
+  text-decoration: none; /* ביטול קו תחתון */
+}
+
+.footerText a:hover {
+  text-decoration: none; /* קו תחתון כאשר העכבר מרחף */
+}
+
+.footerIcon {
+  margin-bottom: 10px; /* רווח בין האייקון לטקסט */
+}
+
+.footerIcons {
+  display: flex;
+  justify-content: center; /* מרכז את האייקונים אופקית */
+  gap: 20px; /* רווח בין האייקונים */
+  margin-top: 80px; /* רווח מעל האייקונים */
+}
+
+.footerIcons a {
+  text-decoration: none; /* ביטול קו תחתון */
+}
+
+.footerText .description {
+  color: #32381f; /* צבע טקסט מותאם */
+}
+
+.footerIcons svg {
+  width: 30px; /* רוחב האייקון */
+  height: auto; /* גובה אוטומטי לשמירה על יחס */
+  transition:
+    transform 0.3s,
+    filter 0.3s; /* אנימציה בזמן ריחוף */
+}
+
+.footerIcons a:hover svg {
+  transform: scale(1.1); /* אפקט של הגדלה בזמן ריחוף */
+}
+
+footer {
+  background-color: #171613; /* צבע רקע כהה */
+  color: #ff6207; /* צבע טקסט */
+  padding: 20px; /* ריווח פנימי */
+  text-align: center; /* מיקום מרכזי של הטקסט */
+  position: relative; /* מאפשר לקבוע את המיקום של אלמנטים פנימיים */
+}
+
+.footerText {
+  margin-bottom: 20px; /* רווח בין הטקסט לאייקונים */
+}
+
+.footerIcons {
+  margin: 10px 0; /* רווח בין האייקונים */
+}
+
+.socialIcon {
+  color: #ffc107; /* צבע האייקונים */
+  margin: 0 10px; /* רווחים בין האייקונים */
+  font-size: 24px; /* גודל האייקונים */
+  transition: transform 0.3s; /* אנימציה בזמן ריחוף */
+}
+
+.socialIcon:hover {
+  transform: scale(1.2); /* אפקט של הגדלה בזמן ריחוף */
+}
+
+.features {
+  display: flex; /* מסודר בשורות */
+  justify-content: space-around; /* רווח שווה בין האלמנטים */
+  flex-wrap: wrap; /* מאפשר למוצרים להתארגן בשורות */
+}
+
+.feature {
+  position: relative; /* חשוב למיקום הקו הזוהר */
+  width: 30%; /* גודל של כל תכונה */
+  padding: 10px; /* ריווח פנימי */
+  text-align: center; /* טקסט ממורכז */
+  background-color: #2C3E50; /* צבע רקע כהה לתכונות */
+  border-radius: 15px; /* פינות מעוגלות */
+  margin: 20px 0; /* רווח בין תכונות */
+  overflow: hidden; /* להסתיר את הקו כשלא מרחפים */
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s; /* אנימציה בזמן ריחוף */
+}
+
+.feature::after {
+  content: ""; /* מאפשר ליצור אלמנט דקורטיבי */
+  position: absolute; /* מיקום מוחלט ביחס להורה */
+  width: 100%; /* לוקח את רוחב הכרטיסייה */
+  height: 4px; /* גובה הקו */
+  bottom: -100%; /* מתחיל מתחת לכרטיסייה */
+  left: 0; /* מיקום משמאל */
+  transition: bottom 0.3s, background 0.3s; /* אנימציה לירידה והחלפת צבע */
+}
+
+
+.feature:hover::after {
+  bottom: 0; /* מכניס את הקו לזווית התחתונה של הכרטיסייה */
+}
+
+.featureText {
+  margin-top: 10px; /* רווח בין האייקון לטקסט */
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* אנימציה של עלים נופלים */
+.falling-leaves {
+  position: fixed; /* השתמש ב-fixed כך שהעלים לא ינועו עם גלילת הדף */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  filter: brightness(0.3); /* מוסיף פילטר בהירות נמוכה על העלים */
+  z-index: 9999; /* מוודא שהעלים יהיו תמיד מעל לתוכן */
+}
+
+.leaf {
+  position: absolute;
+  top: -10%;
+  width: 50px;
+  height: 50px;
+  animation: fall linear infinite;
+  transform-origin: top center;
+  opacity: 1;
+}
+
+.leaf1 {
+  background: url(https://i.postimg.cc/3NWZ1wvW/img2.png) no-repeat center/contain;
+  animation-duration: 10s; /* כל עלה יפול במשך 10 שניות */
+  animation-delay: 0s; /* התחל מיד */
+  left: 10%;
+}
+
+.leaf4 {
+  background: url(https://i.postimg.cc/rFMf782n/img5.png) no-repeat center/contain;
+  animation-duration: 13s; /* כל עלה יפול במשך 15 שניות */
+  animation-delay: 3s; /* התחל אחרי 3 שניות */
+  left: 40%;
+}
+
+/* מגדיר את האנימציה כך שהעלים יפלו עד לתחתית האתר */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg); /* התחל מ-0 */
+    opacity: 1; /* הצג את העלה */
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg); /* סיים אחרי מעבר לכל גובה המסך */
+    opacity: 0; /* העלה ייעלם כשיגיע לסיום */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                       highlights הכרטיסיות                                     */
+
+
+
+
+/* סידור רספונסיבי עבור מסכים בינוניים וקטנים */
+.specific-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 עמודות ברוב המכשירים */
+  gap: 15px; /* רווח בין הכרטיסים */
+  justify-items: center; /* ממקם את הכרטיסים במרכז */
+  margin-top: 100px;
+  padding: 0 20px; /* רווח פנימי בצדדים */
+  margin-left: auto; /* ממרכז את המיכל */
+  margin-right: auto; /* ממרכז את המיכל */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  max-width: 1200px; /* מגביל את רוחב המיכל */
+}
+
+
+/* עיצוב ספציפי לכל כרטיס */
+.specific-highlight {
+  display: flex;
+  flex-direction: column; /* מוודא שהתוכן יהיה בשורות */
+  padding: 15px; /* צמצום הרווח הפנימי בכרטיס */
+  width: 100%; /* כל כרטיס יתפוס את רוחב העמודה */
+  background-color: #FFF ; /* צבע הרקע של כל כרטיס */
+  color: #292B2C; /* צבע ברירת המחדל של הטקסט */
+  border-radius: 8px; /* רדיוס קצוות קל */
+  box-sizing: border-box; /* כולל את המרווח בתוך הגודל הכולל */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* עיצוב האייקונים */
+.specific-highlight .iconBack {
+  color: #b9a56b50; /* צבע רקע לאייקון */
+}
+
+.specific-highlight .iconTop {
+  color: #ffc107; /* צבע אייקון */
+}
+
+/* עיצוב כותרת הטקסט */
+.specific-highlight .highlightText > h3 {
+  color: #292B2C; /* צבע לבן לכותרת */
+  white-space: nowrap; /* מונע שבירת טקסט לשורה חדשה */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* עיצוב התיאור */
+.specific-highlight .highlightText > p {
+  color: #676E8B; /* צבע אפור לטקסט */
+  margin-top: 8px;
+  line-height: 1.5;
+  white-space: normal; /* מאפשר טקסט בשורות */
+  word-wrap: break-word; /* שבירת מילים ארוכות אם צריך */
+  margin-bottom: 0; /* מונע רווח מיותר מתחת לטקסט */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* סידור עבור מסכים בינוניים עד קטנים (סמסונג, אייפון) */
+@media only screen and (max-width: 992px) {
+  .specific-highlights {
+    grid-template-columns: repeat(2, 1fr); /* 2 עמודות */
+    gap: 10px;
+    padding-left: 180px; /* הזזה ימינה */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol"; /* הפונט החדש */
+  }
+}
+
+/* סידור עבור מסכים קטנים מאוד (טאבלטים, טלפונים קטנים יותר) */
+@media only screen and (max-width: 768px) {
+  .specific-highlights {
+    grid-template-columns: 1fr; /* עמודה אחת */
+    gap: 5px;
+    padding-left: 150px; /* הזזה ימינה במסכים קטנים */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol"; /* הפונט החדש */
+  }
+}
+
+/* סידור עבור מכשירים עם מסכים מאוד קטנים (טלפונים קטנים מאוד) */
+@media only screen and (max-width: 480px) {
+  .specific-highlights {
+    grid-template-columns: 1fr; /* עמודה אחת */
+    padding-left: 10px; /* הזזה קלה ימינה */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol"; /* הפונט החדש */
+  }
+}
+
+/* סגנון התמונות שיהיו גמישות */
+img {
+  max-width: 100%; /* התמונה לא תעלה על רוחב ה-container שלה */
+  height: auto; /* יחס הגובה לרוחב יישמר */
+}
+
+/*                   כותרת הכרטיסיות                         */
+
+
+
+.section-title h1 {
+  font-size: 2.5rem; /* גודל טקסט גדול */
+  color: #2C3E50; /* צבע כותרת */
+  text-align: center; /* מיושר למרכז */
+  margin-right: 80px;
+  font-weight: bold; /* מודגש */
+  text-transform: uppercase; /* אותיות גדולות */
+  position: relative; /* מאפשר הזזה באמצעות top */
+  top: 160px; /* מוריד את הטקסט למטה ב-20 פיקסלים */
+  font-family: "Montserrat Alternates", sans-serif;
+  opacity: 0; /* מתחיל את הכותרת עם שקיפות */
+  animation: fadeIn 2s forwards; /* אנימציה שמפיחה חיים בכותרת */
+  transition: transform 0.1s ease-out; /* מעבר חלק לשינוי מיקום */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* עיצוב לסקשן פרופיל */
+.profile-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 0px; /* זז למעלה ב-0px, לא שינוי */
+  direction: rtl;
+  text-align: center;
+  opacity: 0; /* התחל בשקיפות */
+  transform: translateY(20px); /* התחלה עם הזזה כלפי מטה */
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.2s;
+  gap: 20px; /* רווח אחיד בין התמונה לתיאור */
+}
+
+/* אנימציה של הופעה חלקה והזזה כלפי מעלה */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0); /* הזזה חזרה למיקום המקורי */
+  }
+}
+
+/* תמונת פרופיל */
+.profile-image {
+  width: 120px;
+  height: 120px;
+  overflow: hidden; /* למנוע חיתוך של התמונה בצדדים */
+  border-radius: 50%; /* מעגל לתמונה */
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* התמונה מתפשטת כך שתמלא את האלמנט בצורה נכונה */
+  object-position: center; /* ממקם את התמונה במרכז אם יש חיתוך */
+  opacity: 0;
+  transform: scale(0.8);
+  animation: imageScale 1s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+
+
+
+/* אנימציה להגדלת התמונה */
+@keyframes imageScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* התמונה מתחילה מוקטנת */
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.1); /* התמונה מתנפחת */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* התמונה מגיעה לגודלה המקורי */
+  }
+}
+
+/* תיאור הפרופיל */
+.profile-description h2 {
+  font-size: 1.8rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #5A674A;
+  margin: 0 0 10px;
+  opacity: 0;
+  transform: translateX(-20px); /* מתחיל בצד שמאל */
+  animation: slideInLeft 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* אנימציה של שקיפות והזזה של תיאור הפרופיל */
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0); /* התיאור ייכנס למרכז */
+  }
+}
+
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.profile-description p {
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #555454;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideInRight 0.8s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* אפקט זוהר לתמונה בצד ימין */
+.side-image {
+  position: relative; /* הכנסנו position יחסית כדי לשמור על מיקומה */
+}
+
+.side-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* עיגול לתמונה */
+  transition: transform 0.3s ease, filter 0.3s ease; /* תוספת אנימציה לשינוי המראה */
+}
+
+/* אפקט "עלה" לתמונה כשהעכבר עובר עליה */
+.side-image img:hover {
+  transform: translateY(-10px) rotate(-5deg); /* תנועה למעלה עם סיבוב קטן */
+  filter: brightness(1.2) saturate(1.3); /* התאורה וההבהרה על התמונה */
+}
+
+/* רספונסיביות - מסך קטן */
+@media (max-width: 768px) {
+  .profile-section {
+    flex-direction: column; /* המיקום הופך לעמודה (כל אלמנט מעל השני) */
+    text-align: center;
+  }
+
+  .profile-image img {
+    width: 100px; /* גודל תמונה קטן יותר */
+    height: 100px;
+  }
+
+  .profile-description {
+    max-width: 90%; /* הגבלת רוחב התיאור */
+    padding: 10px;
+  }
+
+  .profile-description h2 {
+    font-size: 1.5rem; /* גודל קטן יותר לכותרת */
+  }
+
+  .profile-description p {
+    font-size: 0.95rem; /* גודל קטן יותר לפסקאות */
+  }
+}
+
+/* רספונסיביות - מסך קטן מאוד (סמארטפונים) */
+@media (max-width: 480px) {
+  .profile-section {
+    padding: 10px; /* הפחתת הריווח הכללי */
+  }
+
+  .profile-image img {
+    width: 80px; /* גודל תמונה קטן מאוד */
+    height: 80px;
+  }
+
+  .profile-description h2 {
+    font-size: 1.2rem; /* עוד גודל קטן יותר לכותרת */
+  }
+
+  .profile-description p {
+    font-size: 0.9rem; /* גודל קטן לפסקאות */
+  }
+}
+
+
+
+
+
+/*        תמונות שמתחת לחץץץץץץ               */
+
+/* גלריה ראשונה */
+.gallery {
+  position: relative;
+  margin-left: 0%;
+  top: 100%; /* למשוך את הגלריה למעלה */
+}
+
+/* גלריה שנייה - עם מחלקת gallery-2 */
+.gallery-2 {
+  margin-top: 200px; /* המרחק בין הגלריות */
+  width: 100%; /* הקטנה של הרוחב נשארת כפי שהיא */
+  margin: 0 auto;
+}
+
+/* אם תרצה לשלוט במיקום בצורה מדויקת יותר, אפשר גם להשתמש ב-position */
+.gallery-2 {
+  position: relative;
+  margin-left: 5%;
+  top: 80px; /* המרחק מהגלריה הראשונה */
+  opacity: 0.6;
+}
+
+/* הקונטיינר הראשי של הגלריה */
+.gallery-container {
+  display: flex;
+  align-items: center;
+  height: 400px;
+  margin: 0 auto;
+  max-width: 1000px;
+  position: relative;
+}
+
+/* הגדרת הפריטים בגלריה */
+.gallery-item {
+  height: 200px; /* גובה התמונות נשאר כפי שהיה */
+  width: 330px; /* רוחב התמונות נשאר כפי שהיה */
+  opacity: 0;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  z-index: 0;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* מצב של פריט ספציפי בגלריה */
+.gallery-item-1 {
+  left: 15%;
+  opacity: 0.3;
+  transform: translateX(-50%);
+}
+
+.gallery-item-2 {
+  left: 30%;
+  opacity: 0.8;
+  width: 380px;
+  height: 250px;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.gallery-item-3 {
+  box-shadow: -2px 5px 33px 6px rgba(0, 0, 0, 0.35);
+  height: 300px;
+  opacity: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 430px;
+  z-index: 2;
+}
+
+.gallery-item-4 {
+  left: 70%;
+  opacity: 0.8;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 250px;
+  z-index: 1;
+}
+
+.gallery-item-5 {
+  left: 85%;
+  opacity: 0.3;
+  transform: translateX(-50%);
+  width: 330px;
+  height: 200px;
+  z-index: 0;
+}
+
+/* שינוי התמונות בגלריה השנייה */
+.gallery-2 .gallery-item-1 {
+  left: 10%;
+  opacity: 0.6;
+}
+
+.gallery-2 .gallery-item-2 {
+  left: 25%;
+  opacity: 0.9;
+}
+
+.gallery-2 .gallery-item-3 {
+  box-shadow: -2px 5px 33px 6px rgba(0, 0, 0, 0.5);
+  height: 320px; /* הקטנה קלה של הגובה */
+  opacity: 1;
+  left: 40%;
+  transform: translateX(-50%);
+}
+
+.gallery-2 .gallery-item-4 {
+  left: 60%;
+  opacity: 0.7;
+}
+
+.gallery-2 .gallery-item-5 {
+  left: 75%;
+  opacity: 0.5;
+  /* הוספת צל מיינקראפט */
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.788), -4px -4px 8px rgba(0, 0, 0, 0.712);
+  transform: translateX(-50%);
+  width: 310px; /* הקטנת הרוחב במעט */
+  height: 180px; /* הקטנת הגובה במעט */
+  z-index: 0;
+}
+
+
+
+
+
+
+/*                            האנימציה                                  */
+
+
+
+/* הגדרת קונטיינר ה-GIF */
+.gif-container {
+  display: flex;
+  flex-direction: column; /* מציב את השורות אחת אחרי השנייה */
+  align-items: center; /* ממקם את השורות במרכז */
+  gap: 80px; /* מרווח בין השורות */
+  margin: 0 auto; /* ממרכז את המיכל */
+  padding: 0; /* מסיר רווח פנימי */
+  max-width: 100%; /* מונע חריגה מגבולות המסך */
+  box-sizing: border-box; /* מחשב רווחים בצורה נכונה */
+  /* הסרה של margin-top */
+  margin-top: 0; /* ביטול המרווח מלמעלה */
+}
+
+/* הגדרת כל שורת GIF */
+.gif-row {
+  display: flex;
+  justify-content: center; /* ממקם את ה-GIFים במרכז כל שורה */
+  gap: 200px; /* מרווח בין ה-GIFים בשורה */
+}
+
+/* הגדרת ה-GIF */
+.gif {
+  max-width: 365px; /* גודל מקסימלי ל-GIF */
+  height: auto; /* שמירה על יחס אורך-רוחב */
+  border-radius: 15px;
+  display: block; /* מוודא יישור נכון */
+  box-shadow: 0 -5px 0 #171613; /* צל חד כלפי מעלה ללא טשטוש */
+}
+
+/* עיצוב כרטיס עבור כל GIF כולל כותרת ותיאור */
+.gif-item {
+  text-align: center;
+  max-width: 365px; /* גודל מקסימלי לקונטיינר של ה-GIF */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* כותרת מתחת לכל GIF */
+.gif-description h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #df831a; /* צבע מתאים לכותרת */
+}
+
+/* תיאור מתחת לכותרת */
+.gif-description p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.2;
+  margin: 0;
+  padding: 5px;
+}
+
+/* רספונסיביות למכשירים קטנים יותר (מוביילים מאוד) */
+@media (max-width: 480px) {
+  .gif-container {
+    gap: 5px; /* מרווח קטן מאוד במוביילים */
+    padding: 5px; /* ריווח פנימי קטן יותר */
+  }
+
+  .gif {
+    max-width: 200px; /* גודל ה-GIF קטן מאוד במוביילים */
+  }
+}
+
+
+
+
+/*                        buy now                   */
+
+/*===== VARIABLES CSS =====*/
+:root {
+  /*===== Colores =====*/
+  --first-color: #F2A20C;
+  --white-color: #E9EAEC;
+  --dark-color: #272D40;
+  --dark-color-lighten: #F2F5FF;
+
+  /*===== Fuente y tipografia =====*/
+  --body-font: 'Poppins', sans-serif;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+}
+
+/*===== BASE =====*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+h1, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+
+
+/*                              אחרון!!!    !!                                  */
+
+div .landing-testimonial {
+	/* Font & Text */
+	font-family: "Indie Flower", cursive;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 19.5px;
+	text-decoration: none solid rgb(33, 37, 41);
+	text-align: right;
+	text-indent: 0px;
+	text-transform: none;
+	white-space: normal;
+	word-spacing: 0px;
+
+  /* Box */
+  height: 179.5px;
+  width: 280px;
+  padding: -40px;
+  margin: 0;
+
+  /* Background */
+  background-color: #fff;
+  color: #676E8B;
+
+  /* Positioning */
+  position: static;
+  display: block;
+
+  /* Miscellaneous */
+  overflow: visible;
+  visibility: visible;
+
+  /* Effects */
+  transform: matrix(0.997564, -0.0697565, 0.0697565, 0.997564, 0, 0); /* עיוות */
+  transition: all 0.3s ease; /* אפקט חלק */
+  box-sizing: border-box;
+}
+
+/* Apply normal text styling without the transform effect */
+.landing-testimonial p {
+  transition: none; /* אין אנימציה על הטקסט */
+}
+
+
+
+
+/* הגדרת גובה מינימלי אחיד לכל הכרטיסים */
+.testimonial {
+  margin-top: -35px;
+  margin-bottom: -20px; /* הוסף מרווח מתחת לכל הכרטיסיות */
+}
+
+/* הגדרת כרטיסים קטנים יותר */
+.testimonial .col-3 {
+  position: relative; /* מאפשר להוסיף אפקטים נוספים */
+  flex: 0 0 40%; /* כל אלמנט יקבל 40% מהרוחב */
+  max-width: 280px; /* רוחב מקסימלי קטן יותר */
+  text-align: center;
+  padding: 4px; /* ריווח פנימי קטן יותר */
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease; /* שינוי מהירות האנימציה */
+  margin: 30px 50px; /* רווח סביב הכרטיס */
+  min-height: 180px; /* גובה מינימלי קטן יותר */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* מפזר את האלמנטים בצורה אחידה */
+  align-items: center; /* ממרכז את התמונה ושאר האלמנטים */
+  background-color: #fff; /* צבע הרקע */
+  border-radius: 10px; /* פינות עגולות 10px */
+}
+
+/* גם כאן ניתן לשנות את השפעת הריחוף */
+.testimonial .col-3:hover {
+  transform: translateY(-5px); /* ריחוף קל יותר */
+  background-color: #585454; /* שינוי צבע בעת ריחוף */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* אנימציה חלקה */
+}
+
+
+/* אפקט ריחוף עם סיבוב קל ומעבר צבע */
+.testimonial .col-3:hover {
+  transform: translateY(-10px) rotate(3deg); /* ריחוף קל וסיבוב */
+  background-color: #5c5c5c67; /* שינוי צבע בעת ריחוף */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* אנימציה חלקה */
+}
+
+/* אפקט גל של מעבר צבעים עם אנימציה */
+.testimonial .col-3:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.082), transparent);
+  animation: ripple 1s ease-out;
+  z-index: -1; /* לשמור שהאפקט יהיה ברקע */
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* עיצוב לתמונות */
+.testimonial img {
+  max-width: 80%; /* התמונה תתפס 80% מהכרטיס */
+  height: auto; /* שומר על יחס הגובה לרוחב */
+  border-radius: 5px; /* פינות עגולות לתמונה */
+}
+
+/* עיצוב לדרוג */
+.rating {
+  margin: 10px 0; /* ריווח סביב הדירוג */
+}
+
+/* יישור התמונה במרכז */
+.testimonial .col-3 img {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  border-radius: 50%;
+  display: block;
+}
+
+/* עיצוב עבור הקטע של הטסטימוניאלים */
+.testimonial .row {
+  display: flex; /* שורת האלמנטים תהיה לרוחב */
+  flex-wrap: wrap; /* מאפשר שבירה לשורות נוספות */
+  justify-content: center; /* יישור אל האלמנטים מתחילת השורה */
+  margin: 0; /* אין מרווח חיצוני לשורה */
+  gap: 10px; /* אין רווח בין האלמנטים */
+}
+
+/* אנימציה בעת ריחוף על האלמנט */
+.testimonial .col-3:hover {
+  transform: translateY(-10px);
+}
+
+/* עיצוב הציטוט */
+.fa.fa-quote-left {
+  font-size: 34px;
+  color: #ff523b;
+}
+
+/* עיצוב הפסקאות */
+.testimonial .col-3 p {
+  font-size: 15px;
+  margin: 12px 0;
+  color: #777;
+}
+
+/* עיצוב הכותרת */
+.testimonial .col-3 h3 {
+  font-weight: 600;
+  color: #6f7c5f;
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* דירוג */
+.rating .fa {
+  color: #ff523b;
+}
+
+
+
+.testimonial-title {
+  margin-top: 240px;
+  text-align: center; /* ממקם את הכותרת במרכז */
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 2.5rem; /* גודל טקסט גדול */
+  color: #2C3E50; /* צבע כותרת */
+  margin-bottom: 46px; /* מרווח מתחת לכותרת */
+  font-weight: bold; /* הופך את הכותרת לבולטת */
+}
+
+
+.testimonial-section {
+  display: flex;
+  justify-content: center; /* ממרכז אופקית */
+  align-items: center; /* ממרכז אנכית */
+margin-top: 40px;
+}
+
+.landing-testimonial {
+  font-family: "Indie Flower", cursive;
+  font-size: 16px;
+  text-align: center; /* מיישר את הטקסט */
+  color: #212121;
+  padding: 20px;
+  border-radius: 10px; /* פינות מעוגלות */
+  box-sizing: border-box;
+}
+
+
+
+/* עיצוב למסכים קטנים */
+@media (max-width: 768px) {
+  .testimonial .col-3 {
+    flex: 0 0 100%; /* הכרטיסים יתפסו 100% רוחב */
+    max-width: 100%; /* מסיר מגבלה על רוחב מקסימלי */
+    margin: 10px 0; /* יישור רווחים מתחת לכרטיסים */
+  }
+
+  .testimonial img {
+    max-width: 60%; /* מצמצם את גודל התמונה */
+  }
+
+  .testimonial .col-3 h3 {
+    font-size: 18px; /* כותרת קטנה יותר */
+  }
+
+  .testimonial .col-3 p {
+    font-size: 14px; /* טקסט קטן יותר */
+  }
+
+  .testimonial-title {
+    font-size: 2rem; /* כותרת ראשית קטנה יותר */
+    margin-top: 120px; /* רווח מופחת */
+  }
+}
+
+/* עיצוב למסכים בינוניים */
+@media (max-width: 1024px) {
+  .testimonial .col-3 {
+    flex: 0 0 45%; /* כל כרטיס יתפוס 45% רוחב */
+    max-width: 45%; /* מגבלה לרוחב כרטיס */
+  }
+
+  .testimonial-title {
+    font-size: 2.2rem; /* כותרת בינונית */
+    margin-top: 160px;
+  }
+}
+
+/* עיצוב למסכים גדולים */
+@media (min-width: 1025px) {
+  .testimonial .col-3 {
+    flex: 0 0 30%; /* כל כרטיס יתפוס 30% רוחב */
+    max-width: 350px;
+  }
+}

@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* כהה יותר */
+    color: #e5e5e5; /* טקסט בהיר */
+  }
+  
+  .page-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #b5b7ad; /* צבע הרקע המעודכן */
+    border-radius: 5px; /* קצוות מעוגלים */
+    margin-bottom: 30px; /* רווח תחתון */
+  }
+  
+  .page-header h1 {
+    font-size: 32px; /* גודל הכותרת הראשית */
+    color: #1c274c; /* צבע הכותרת */
+    margin-bottom: 10px;
+    font-family: "Arial", sans-serif; /* פונט */
+  }
+  
+  .page-header p {
+    font-size: 18px; /* גודל הטקסט */
+    color: #333; /* צבע הטקסט */
+    margin: 0;
+  }
+  
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1c1c1c; /* רקע כהה */
+    border: 1px solid #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #fff; /* כותרות לבנות */
+    font-size: 24px; /* גודל כותרות */
+    margin-top: 30px; /* רווח מעל */
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  ul {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #f39c12; /* לינקים כחולים בהירים */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* כהה יותר */
+    color: #e5e5e5; /* טקסט בהיר */
+  }
+  
+  .page-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #b5b7ad; /* צבע הרקע המעודכן */
+    border-radius: 5px; /* קצוות מעוגלים */
+    margin-bottom: 30px; /* רווח תחתון */
+  }
+  
+  .page-header h1 {
+    font-size: 32px; /* גודל הכותרת הראשית */
+    color: #1c274c; /* צבע הכותרת */
+    margin-bottom: 10px;
+    font-family: "Arial", sans-serif; /* פונט */
+  }
+  
+  .page-header p {
+    font-size: 18px; /* גודל הטקסט */
+    color: #333; /* צבע הטקסט */
+    margin: 0;
+  }
+  
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1c1c1c; /* רקע כהה */
+    border: 1px solid #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #fff; /* כותרות לבנות */
+    font-size: 24px; /* גודל כותרות */
+    margin-top: 30px; /* רווח מעל */
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  ul {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #f39c12; /* לינקים כחולים בהירים */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
